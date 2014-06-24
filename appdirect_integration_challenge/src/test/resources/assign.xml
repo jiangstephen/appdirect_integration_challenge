@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<event>
+	<creator>
+		<email>jiangstephen@hotmail.com</email>
+		<firstName>Stephen</firstName>
+		<language>en</language>
+		<lastName>Jiang</lastName>
+		<openId>https://www.appdirect.com/openid/id/3dd0e359-6477-486d-afdf-e93eaa949bb0
+		</openId>
+		<uuid>3dd0e359-6477-486d-afdf-e93eaa949bb0</uuid>
+	</creator>
+	<flag>DEVELOPMENT</flag>
+	<marketplace>
+		<baseUrl>https://www.appdirect.com</baseUrl>
+		<partner>APPDIRECT</partner>
+	</marketplace>
+	<payload>
+		<account>
+			<accountIdentifier>Stephen_Jiang</accountIdentifier>
+			<status>ACTIVE</status>
+		</account>
+		<configuration />
+		<user>
+			<email>jiangstev@gmail.com</email>
+			<firstName>stev</firstName>
+			<language>en</language>
+			<lastName>jiang</lastName>
+			<openId>https://www.appdirect.com/openid/id/4032aa1a-612d-4661-a586-c6e5b26bd88a
+			</openId>
+			<uuid>4032aa1a-612d-4661-a586-c6e5b26bd88a</uuid>
+		</user>
+	</payload>
+	<type>USER_ASSIGNMENT</type>
+</event>

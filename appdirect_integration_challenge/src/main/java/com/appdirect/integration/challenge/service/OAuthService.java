@@ -23,13 +23,15 @@ public class OAuthService implements IOAuthService {
 	
 	private static Logger LOG = Logger.getLogger(OAuthService.class);
 	
-	public static String APPDIRECT_CUSTOMER_KEY="stephens-product-10559";
-	public static String APPDIRECT_CUSTOMER_SECRET="TpOKRUHMTzVOtVxI";
-	
 	private SignatureService signatureService;
 	
+	private AppdirectOauthSecret customerSecret;
 	
-	
+
+	public void setCustomerSecret(AppdirectOauthSecret customerSecret) {
+		this.customerSecret = customerSecret;
+	}
+
 	public void setSignatureService(SignatureService signatureService) {
 		this.signatureService = signatureService;
 	}
@@ -40,7 +42,7 @@ public class OAuthService implements IOAuthService {
 	@Override
 	public String signUrl(String url) throws IOException, OAuthMessageSignerException, OAuthExpectationFailedException, OAuthCommunicationException{
 		
-		OAuthConsumer consumer = new DefaultOAuthConsumer(APPDIRECT_CUSTOMER_KEY,APPDIRECT_CUSTOMER_SECRET);
+		OAuthConsumer consumer = new DefaultOAuthConsumer(customerSecret.getCustomerKey(), customerSecret.getCustomerSecret());
 		consumer.setSigningStrategy( new QueryStringSigningStrategy());
 		String signedUrl = consumer.sign(url);
 		return signedUrl;
@@ -54,7 +56,7 @@ public class OAuthService implements IOAuthService {
 		params.readRequest(oauthServerRequest);
 		LOG.debug("timestamp:" + params.getTimestamp());
 		OAuthSecrets oauthSecret = new OAuthSecrets();
-		oauthSecret.setConsumerSecret(OAuthService.APPDIRECT_CUSTOMER_SECRET);
+		oauthSecret.setConsumerSecret(customerSecret.getCustomerSecret());
 		if (!signatureService.verifySignature(oauthServerRequest, params,
 				oauthSecret)) {
 			throw new WebApplicationException(Status.UNAUTHORIZED);

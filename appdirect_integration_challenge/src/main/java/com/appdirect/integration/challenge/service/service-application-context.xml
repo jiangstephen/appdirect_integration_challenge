@@ -9,17 +9,29 @@
    
    <bean id="oauthService" class="com.appdirect.integration.challenge.service.OAuthService">
    		<property name="signatureService" ref="signatureService"></property>
+   		<property name="customerSecret" ref="appdirectOauthSecret"></property>
    </bean>
    
    <bean id="signatureService" class="com.appdirect.integration.challenge.service.SignatureService">
+   		<property name="customerSecret" ref="appdirectOauthSecret"></property>
    </bean>
+   
+   <bean id="appdirectOauthSecret" class="com.appdirect.integration.challenge.service.AppdirectOauthSecret">
+   		<property name="customerKey" value="${appdirect.customer_key}"></property>
+   		<property name="customerSecret" value="${appdirect.customer_secret}"></property>
+   </bean>
+   
    
    <bean id="eventService" class="com.appdirect.integration.challenge.service.EventService">
    		<property name="oauthService" ref="oauthService"></property>
    		<property name="jaxbService" ref="jaxbService"></property>
    		<property name="handlerRepoistory" ref="handlerRepoistory"></property>
    		<property name="eventDataStore" ref="notificationEventStore"></property>
-   		
+   		   
+   </bean>
+   
+      <bean id="entityViewService" class="com.appdirect.integration.challenge.service.EntityViewService">
+   		<property name="eventDataStore" ref="notificationEventStore"></property>
    		<property name="subscriptionManagerStore" ref="subscriptionManagerStore"></property>
    		<property name="subscriberStore" ref="subscriberStore"></property>
    		   

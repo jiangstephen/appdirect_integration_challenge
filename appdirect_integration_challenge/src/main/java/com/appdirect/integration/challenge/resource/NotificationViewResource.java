@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 
 import org.apache.log4j.Logger;
 
-import com.appdirect.integration.challenge.service.IEventService;
+import com.appdirect.integration.challenge.service.IEntityViewService;
 
 
 @Path("/ui")
@@ -17,10 +17,10 @@ public class NotificationViewResource {
 	
 	private static Logger LOG = Logger.getLogger(NotificationViewResource.class);
 	
-	private IEventService eventService;
+	private IEntityViewService entityViewService;
 	
-	public void setEventService(IEventService eventService) {
-		this.eventService = eventService;
+	public void setEntityViewService(IEntityViewService entityViewService) {
+		this.entityViewService = entityViewService;
 	}
 
 	@GET
@@ -28,22 +28,22 @@ public class NotificationViewResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response showAllEvent()  {
 		
-		LOG.debug(eventService.getAllNotificationEvent());
-		return Response.ok(eventService.getAllNotificationEvent()).build();
+		LOG.debug(entityViewService.getAllNotificationEvent());
+		return Response.ok(entityViewService.getAllNotificationEvent()).build();
 	}
 	
 	@GET
 	@Path("showsubscriber")	
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response showAllSubscriber()  {
-		return Response.ok(eventService.getAllSubScriber()).build();
+		return Response.ok(entityViewService.getAllSubScriber()).build();
 	}
 	
 	@GET
 	@Path("showaccountmanager/{accountIdentifier}")	
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response showAccountManager(@PathParam("accountIdentifier") String accountIdentifier)  {
-		return Response.ok(eventService.getSubscriptionManager(accountIdentifier)).build();
+		return Response.ok(entityViewService.getSubscriptionManager(accountIdentifier)).build();
 	}
 	
 	

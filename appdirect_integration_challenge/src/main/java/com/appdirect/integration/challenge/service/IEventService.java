@@ -17,10 +17,7 @@ public interface IEventService {
 
 	Response handleRequest(String eventUrl, HttpServletRequest _currentRequest,
 			HttpContext _currentContext);
-	Collection<NotificationEvent> getAllNotificationEvent();
-	Collection<SubscriptionManager> getSubscriptionManager(String accountIdentifier);
-	Collection<Subscriber> getAllSubScriber();
-	void registerEvent(Event event, EventResult eventResult);
+
 	
 
 }

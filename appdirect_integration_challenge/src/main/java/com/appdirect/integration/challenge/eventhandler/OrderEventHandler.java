@@ -7,7 +7,6 @@ import org.apache.commons.lang3.StringUtils;
 import com.appdirect.integration.challenge.data.Creator;
 import com.appdirect.integration.challenge.data.Event;
 import com.appdirect.integration.challenge.data.EventResult;
-import com.appdirect.integration.challenge.datastore.SubscriberStore;
 import com.appdirect.integration.challenge.model.Subscriber;
 
 public class OrderEventHandler extends AbstractEventHandler<EventResult>{

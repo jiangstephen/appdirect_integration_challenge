@@ -25,7 +25,13 @@ public class SignatureService implements ISignatureService {
 	
 	private static final String HMAC_SHA1_ALGORITHM = "HmacSHA1";
 	
+	private AppdirectOauthSecret customerSecret;
 	
+
+	public void setCustomerSecret(AppdirectOauthSecret customerSecret) {
+		this.customerSecret = customerSecret;
+	}
+
 	/* (non-Javadoc)
 	 * @see com.appdirect.integration.challenge.service.ISignatureService#verifySignature(com.sun.jersey.oauth.server.OAuthServerRequest, com.sun.jersey.oauth.signature.OAuthParameters, com.sun.jersey.oauth.signature.OAuthSecrets)
 	 */
@@ -71,11 +77,11 @@ public class SignatureService implements ISignatureService {
 	 */
 	@Override
 	public void verifySignature(String signature, String baseString, String customerKey){
-		if(!OAuthService.APPDIRECT_CUSTOMER_KEY.equals(customerKey)){
+		if(!customerSecret.getCustomerKey().equals(customerKey)){
 			throw new WebApplicationException(Status.UNAUTHORIZED);
 		}
 		try{
-			String expectedSignature = encrypt(baseString, OAuthService.APPDIRECT_CUSTOMER_SECRET);
+			String expectedSignature = encrypt(baseString, customerSecret.getCustomerSecret());
 			if(!expectedSignature.equals(signature)){
 				throw new WebApplicationException(Status.UNAUTHORIZED);
 			}

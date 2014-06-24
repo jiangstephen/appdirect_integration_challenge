@@ -9,7 +9,7 @@
    </bean>
 
    <bean id="notificationViewResource" class="com.appdirect.integration.challenge.resource.NotificationViewResource">
-   		<property name="eventService" ref="eventService"></property>
+   		<property name="entityViewService" ref="entityViewService"></property>
    </bean>
 
 </beans>
