@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <bean id="jaxbService" class="com.appdirect.integration.challenge.service.JAXBService">
+   </bean>
+   
+   <bean id="oauthService" class="com.appdirect.integration.challenge.service.OAuthService">
+   		<property name="signatureService" ref="signatureService"></property>
+   </bean>
+   
+   <bean id="signatureService" class="com.appdirect.integration.challenge.service.SignatureService">
+   </bean>
+   
+   <bean id="eventService" class="com.appdirect.integration.challenge.service.EventService">
+   		<property name="oauthService" ref="oauthService"></property>
+   		<property name="jaxbService" ref="jaxbService"></property>
+   		<property name="handlerRepoistory" ref="handlerRepoistory"></property>   
+   </bean>
+
+</beans>

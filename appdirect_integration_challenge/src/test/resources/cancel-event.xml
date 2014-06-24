@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<event>
+    <!-- https://www.acme-marketplace.com/api/integration/v1/events/d15bb36e-5fb5-11e0-8c3c-00262d2cda03 -->
+    <type>SUBSCRIPTION_CANCEL</type>
+    <marketplace>
+        <partner>ACME</partner>
+        <baseUrl>https://www.acme-marketplace.com</baseUrl>
+    </marketplace>
+    <creator>
+        <email>andysen@gmail.com</email>
+        <firstName>Andy</firstName>
+        <lastName>Sen</lastName>
+        <openId>https://www.acme-marketplace.com/openid/id/a11a7918-bb43-4429-a256-f6d729c71033</openId>
+    </creator>
+    <payload>
+        <account>
+            <accountIdentifier>MY_ACCOUNT</accountIdentifier>
+        </account>
+    </payload>
+</event>

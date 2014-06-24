@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    ">
+
+   <bean id="orderEventHandler" class="com.appdirect.integration.challenge.eventhandler.OrderEventHandler">
+       <property name="subscriberStore" ref="subscriberStore"></property>
+   </bean>
+
+   <bean id="cancelEventHandler" class="com.appdirect.integration.challenge.eventhandler.CancelEventHandler">
+       <property name="subscriberStore" ref="subscriberStore"></property>
+   </bean>
+
+   <bean id="changeEventHandler" class="com.appdirect.integration.challenge.eventhandler.ChangeEventHandler">
+       <property name="subscriberStore" ref="subscriberStore"></property>
+   </bean>
+   
+   <bean id="noticeEventHandler" class="com.appdirect.integration.challenge.eventhandler.NoticeEventHandler">
+       <property name="subscriberStore" ref="subscriberStore"></property>
+   </bean>
+   
+   <bean id="eventDefaultHandler" class="com.appdirect.integration.challenge.eventhandler.EventDefaultHandler">
+       <property name="subscriberStore" ref="subscriberStore"></property>
+   </bean>
+   
+   <bean id="handlerRepoistory" class="com.appdirect.integration.challenge.eventhandler.HandlerRepository">
+   		<property name="eventDefaultHandler" ref="eventDefaultHandler"></property>
+   		<property name="eventHandlers">
+   			<map  key-type="com.appdirect.integration.challenge.data.EventType">
+   				<entry key="SUBSCRIPTION_ORDER" value-ref="orderEventHandler"/>
+   				<entry key="SUBSCRIPTION_CHANGE" value-ref="changeEventHandler"/>
+   				<entry key="SUBSCRIPTION_CANCEL" value-ref="cancelEventHandler"/>
+   				<entry key="SUBSCRIPTION_NOTICE" value-ref="noticeEventHandler"/>
+   			</map>
+   		</property>
+   </bean>
+   
+</beans>

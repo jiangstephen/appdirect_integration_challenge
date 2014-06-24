@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<result>
+    <success>true</success>
+    <message>Account creation successful</message>
+    <accountIdentifier>new-account-identifier</accountIdentifier>
+</result>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<result>
+    <success>false</success>
+    <errorCode>ACCOUNT_NOT_FOUND</errorCode>
+    <message>The account TEST123 could not be found.</message>
+</result>
