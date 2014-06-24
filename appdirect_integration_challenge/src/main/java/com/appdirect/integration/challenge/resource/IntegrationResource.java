@@ -6,13 +6,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.appdirect.integration.challenge.service.IEventService;
 import com.sun.jersey.api.core.HttpContext;
 
 @Path("/")
-@Produces("application/xml")
+@Produces(MediaType.APPLICATION_XML)
 public class IntegrationResource {
 	
 	private IEventService eventService;

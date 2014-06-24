@@ -17,7 +17,12 @@
    <bean id="eventService" class="com.appdirect.integration.challenge.service.EventService">
    		<property name="oauthService" ref="oauthService"></property>
    		<property name="jaxbService" ref="jaxbService"></property>
-   		<property name="handlerRepoistory" ref="handlerRepoistory"></property>   
+   		<property name="handlerRepoistory" ref="handlerRepoistory"></property>
+   		<property name="eventDataStore" ref="notificationEventStore"></property>
+   		
+   		<property name="subscriptionManagerStore" ref="subscriptionManagerStore"></property>
+   		<property name="subscriberStore" ref="subscriberStore"></property>
+   		   
    </bean>
 
 </beans>

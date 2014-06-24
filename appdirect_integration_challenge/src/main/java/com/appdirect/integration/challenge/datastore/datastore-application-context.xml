@@ -6,5 +6,11 @@
 
    <bean id="subscriberStore" class="com.appdirect.integration.challenge.datastore.SubscriberStore">
    </bean>
+   
+   <bean id="notificationEventStore" class="com.appdirect.integration.challenge.datastore.NotificationEventStore">
+   </bean>
+   
+   <bean id="subscriptionManagerStore" class="com.appdirect.integration.challenge.datastore.SubscriptionManagerStore">
+   </bean>
 
 </beans>

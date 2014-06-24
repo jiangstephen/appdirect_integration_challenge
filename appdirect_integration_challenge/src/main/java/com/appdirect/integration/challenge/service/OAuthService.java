@@ -5,11 +5,6 @@ import java.io.IOException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response.Status;
 
-import com.sun.jersey.api.core.HttpContext;
-import com.sun.jersey.oauth.server.OAuthServerRequest;
-import com.sun.jersey.oauth.signature.OAuthParameters;
-import com.sun.jersey.oauth.signature.OAuthSecrets;
-
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.basic.DefaultOAuthConsumer;
 import oauth.signpost.exception.OAuthCommunicationException;
@@ -17,8 +12,16 @@ import oauth.signpost.exception.OAuthExpectationFailedException;
 import oauth.signpost.exception.OAuthMessageSignerException;
 import oauth.signpost.signature.QueryStringSigningStrategy;
 
+import org.apache.log4j.Logger;
+
+import com.sun.jersey.api.core.HttpContext;
+import com.sun.jersey.oauth.server.OAuthServerRequest;
+import com.sun.jersey.oauth.signature.OAuthParameters;
+import com.sun.jersey.oauth.signature.OAuthSecrets;
+
 public class OAuthService implements IOAuthService {
 	
+	private static Logger LOG = Logger.getLogger(OAuthService.class);
 	
 	public static String APPDIRECT_CUSTOMER_KEY="stephens-product-10559";
 	public static String APPDIRECT_CUSTOMER_SECRET="TpOKRUHMTzVOtVxI";
@@ -49,14 +52,14 @@ public class OAuthService implements IOAuthService {
 		OAuthServerRequest oauthServerRequest = new OAuthServerRequest(
 				_currentContext.getRequest());
 		params.readRequest(oauthServerRequest);
-		System.out.println("timestamp:" + params.getTimestamp());
+		LOG.debug("timestamp:" + params.getTimestamp());
 		OAuthSecrets oauthSecret = new OAuthSecrets();
 		oauthSecret.setConsumerSecret(OAuthService.APPDIRECT_CUSTOMER_SECRET);
 		if (!signatureService.verifySignature(oauthServerRequest, params,
 				oauthSecret)) {
 			throw new WebApplicationException(Status.UNAUTHORIZED);
 		}
-		System.out.println("Authentication successfully");
+		LOG.debug("Authentication successfully");
 	}
 
 }

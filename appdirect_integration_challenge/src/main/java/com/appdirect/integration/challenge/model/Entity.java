@@ -8,29 +8,15 @@ public abstract class Entity implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	protected String uuid;
-	
-	protected String name;
+	protected Integer id;
 	
 	protected Date createdDate;
 	
 	protected Date updatedDate;
-
-	public String getUuid() {
-		return uuid;
-	}
-
-	public void setUuid(String uuid) {
-		this.uuid = uuid;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	
+	protected String createdBy;
+	
+	protected String updatedBy;
 
 	public Date getCreatedDate() {
 		return createdDate;
@@ -47,9 +33,30 @@ public abstract class Entity implements Serializable{
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
-	
-	
-	
-	
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
 
 }

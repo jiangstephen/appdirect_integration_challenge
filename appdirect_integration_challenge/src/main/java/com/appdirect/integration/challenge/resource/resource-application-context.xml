@@ -8,5 +8,8 @@
    		<property name="eventService" ref="eventService"></property>
    </bean>
 
+   <bean id="notificationViewResource" class="com.appdirect.integration.challenge.resource.NotificationViewResource">
+   		<property name="eventService" ref="eventService"></property>
+   </bean>
 
 </beans>

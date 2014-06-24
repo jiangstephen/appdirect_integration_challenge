@@ -15,6 +15,8 @@ public class NoticeEventHandler extends AbstractEventHandler<EventResult>{
 		if(subscriber==null){
 			return new EventResult(String.format("Account Identifier %s doesn't exist.", accountIdentifer), ErrorCode.ACCOUNT_NOT_FOUND);
 		}
+		
+		
 		return new EventResult("Notice is received successfully", accountIdentifer);
 	}
 

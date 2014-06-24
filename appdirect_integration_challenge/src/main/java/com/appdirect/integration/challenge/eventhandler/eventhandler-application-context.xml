@@ -24,6 +24,18 @@
        <property name="subscriberStore" ref="subscriberStore"></property>
    </bean>
    
+   <bean id="assignEventHandler" class="com.appdirect.integration.challenge.eventhandler.AssignEventHandler">
+       <property name="subscriberStore" ref="subscriberStore"></property>
+       <property name="subscriptionManagerStore" ref="subscriptionManagerStore"></property>
+   </bean>
+   
+   <bean id="unassignEventHandler" class="com.appdirect.integration.challenge.eventhandler.UnassignEventHandler">
+       <property name="subscriberStore" ref="subscriberStore"></property>
+       <property name="subscriptionManagerStore" ref="subscriptionManagerStore"></property>
+   </bean>
+   
+   
+   
    <bean id="handlerRepoistory" class="com.appdirect.integration.challenge.eventhandler.HandlerRepository">
    		<property name="eventDefaultHandler" ref="eventDefaultHandler"></property>
    		<property name="eventHandlers">
@@ -32,6 +44,9 @@
    				<entry key="SUBSCRIPTION_CHANGE" value-ref="changeEventHandler"/>
    				<entry key="SUBSCRIPTION_CANCEL" value-ref="cancelEventHandler"/>
    				<entry key="SUBSCRIPTION_NOTICE" value-ref="noticeEventHandler"/>
+   				<entry key="USER_ASSIGNMENT" value-ref="assignEventHandler"/>
+   				<entry key="USER_UNASSIGNMENT" value-ref="unassignEventHandler"/>
+   				
    			</map>
    		</property>
    </bean>

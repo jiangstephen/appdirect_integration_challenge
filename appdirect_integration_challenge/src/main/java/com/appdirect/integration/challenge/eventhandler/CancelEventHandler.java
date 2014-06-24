@@ -14,7 +14,7 @@ public class CancelEventHandler extends AbstractEventHandler<EventResult>{
 		if(subscriber==null){
 			return new EventResult(String.format("Account Identifier %s doesn't exist.", accountIdentifer), ErrorCode.ACCOUNT_NOT_FOUND);
 		}
-		subscriberStore.delete(subscriber.getUuid());
+		subscriberStore.delete(subscriber.getAccountIdentifier());
 		return new EventResult("Subscription is cancelled successfully.", accountIdentifer);
 	}
 

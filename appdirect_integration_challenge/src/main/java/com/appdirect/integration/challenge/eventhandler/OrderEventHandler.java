@@ -23,14 +23,15 @@ public class OrderEventHandler extends AbstractEventHandler<EventResult>{
 			subscriber.setLastName(creator.getLastName());
 			subscriber.setCompanyUuid(event.getPayload().getCompany().getUuid());
 			subscriber.setEditionCode(event.getPayload().getOrder().getEditionCode());
-			subscriber.setUuid(event.getCreator().getUuid());
-			subscriberStore.create(subscriber);	
+			subscriberStore.create(subscriber, event);	
 			eventResult = new EventResult("Account created for "+creator.getFirstName() + " "+creator.getLastName(),subscriber.getAccountIdentifier());
 			
 		} else {
 			eventResult = new EventResult("Account already exists for "+creator.getFirstName()+" "+creator.getLastName(), ErrorCode.USER_ALREADY_EXISTS);
 		}
-		appendEventUrl(event, eventResult);
+		if(StringUtils.isNotBlank(event.getReturnUrl())){
+			appendEventUrl(event, eventResult);
+		}
 		return eventResult;
 	}
 	

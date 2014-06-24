@@ -1,7 +1,11 @@
 package com.appdirect.integration.challenge.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.appdirect.integration.challenge.data.EditionType;
 
+
+@XmlRootElement
 public class Subscriber extends Entity{
 	
 
